@@ -38,7 +38,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo "=== Building Hello World ==="
-                      cd MyFirstProject/hello-world-app
+                      cd hello-world-app
                       mvn clean package -q
                       echo ""
                       echo "=== Running the App ==="
