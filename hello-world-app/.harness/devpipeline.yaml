@@ -12,8 +12,8 @@
 # No Delegate needed for this pipeline.
 # ============================================
 pipeline:
-  name: devpipeline
-  identifier: devpipeline
+  name: git
+  identifier: git
   # CHANGE THIS: Your project ID (find in URL after /projects/)
   projectIdentifier: MyFirstProject
   # CHANGE THIS: Your organization name (usually "default")
@@ -26,7 +26,10 @@ pipeline:
         connectorRef: account.gitconn
         # CHANGE THIS: Your GitHub repository name
         repoName: MyFirstProject
-        build: <+input>
+        build: 
+          type: branch
+          spec:
+          branch: main
   stages:
     - stage:
         name: dev
@@ -56,7 +59,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo "=== Building Hello World ==="
-                      cd MyFirstProject/hello-world-app
+                      cd hello-world-app
                       mvn clean package -q
                       echo ""
                       echo "=== Running the App ==="
